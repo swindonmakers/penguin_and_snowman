@@ -16,12 +16,14 @@
 // Hat + Face are subsets of Head
 #define HAT_START    0
 #define HAT_END      4
+#define HAT_COLOR    CRGB::Blue
 #define FACE_START   5
 #define FACE_END     9
+#define FACE_COLOR   CRGB::Red
 #define MOUTH_START 10
 #define MOUTH_END   13
+#define MOUTH_COLOR  CRGB::White
 
-// Might need more than one of these?
 #define BRIGHTNESS 96
 
 #define LED_TYPE WS2812
@@ -41,14 +43,15 @@ void setup() {
 
 void loop() {
    // Snowman Head
-   for( int i = HAT_START; i = HAT_END; i++) {
-       head[i] = CRGB::Blue;
-   }
-   for( int i = FACE_START; i = FACE_END; i++) {
-       head[i] = CRGB::White;
-   }
-   for( int i = MOUTH_START; i = MOUTH_END; i++) {
-       head[i] = CRGB::Red;
-   }
+   color_item(head, HAT_START, HAT_END, HAT_COLOR);
+   color_item(head, FACE_START, FACE_END, FACE_COLOR);
+   color_item(head, MOUTH_START, MOUTH_END, MOUTH_COLOR);
+   
    FastLED.show();
+}
+
+void color_item(CRGB section[], int start_led, int end_led, int color) {
+   for( int i = start_led; i <= end_led; i++) {
+       section[i] = color;
+   }    
 }
