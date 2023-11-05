@@ -1,28 +1,7 @@
 // Penguin and Snowman Selfie Point Illumination
 
 #include <FastLED.h>
-
-// Defines leds for various parts:
-
-#define DATA_PIN_HEAD 4
-#define DATA_PIN_BODY 5
-#define DATA_PIN_UMBRELLA 6
-
-#define BODY_START   0
-#define BODY_END     5
-// Head
-#define HEAD_START   0
-#define HEAD_END    13
-// Hat + Face are subsets of Head
-#define HAT_START    0
-#define HAT_END      4
-#define HAT_COLOR    CRGB::Blue
-#define FACE_START   5
-#define FACE_END     9
-#define FACE_COLOR   CRGB::Red
-#define MOUTH_START 10
-#define MOUTH_END   13
-#define MOUTH_COLOR  CRGB::White
+#include "p_s.h"
 
 #define BRIGHTNESS 96
 
