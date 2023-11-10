@@ -73,7 +73,7 @@
 // Penguin Umbrella
 #define P_UMBRELLA_START  0
 #define P_UMBRELLA_END   80
-#define P_UMBRELLA_COLOR  CRGB::Red
+#define P_UMBRELLA_COLOR  CRGB::Pink
 
 #define PENGUINS_START    0
 #define PENGUINS_END      100

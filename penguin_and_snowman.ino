@@ -6,7 +6,7 @@
 #define BRIGHTNESS 96
 
 #define LED_TYPE WS2811
-#define COLOR_ORDER GRB
+#define COLOR_ORDER RGB
 
 CRGB body[BODY_END - BODY_START];
 CRGB head[HEAD_END - HEAD_START];
@@ -58,7 +58,7 @@ void loop() {
   color_item(p_umbrella, P_UMBRELLA_START, P_UMBRELLA_END, P_UMBRELLA_COLOR);
 
   // Penguin 1 body
-  color_item(penguins, P_1_BODY_START, 
+  color_item(penguins, P_1_BODY_START, P_1_BODY_END, P_1_BODY_COLOR);
 
   FastLED.show();
 }
