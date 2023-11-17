@@ -66,14 +66,53 @@
 #define NOSE_COLOR  CRGB::Orange
 
 // Snowman Umbrella
+//sections of Snowman Umbrella
+#define S_UMBRELLA_HANDLE_CNT       10    //handle LED Count
+#define S_UMBRELLA_L_RIB_OUTER_CNT  20    //left outmost rib LED Count
+#define S_UMBRELLA_R_RIB_OUTER_CNT  19    //right outmost rib LED Count
+#define S_UMBRELLA_L_RIB_MID_CNT    17    //left middle rib LED Count
+#define S_UMBRELLA_R_RIB_MID_CNT    17    //right middle rib LED Count
+#define S_UMBRELLA_L_RIB_CENTRE_CNT 12    //left center rib LED Count
+#define S_UMBRELLA_R_RIB_CENTRE_CNT 12     //right center rib LED Count
+#define S_UMBRELLA_BTM_CANOPY_CNT   33    //btm bit LED Count
+
+#define S_UMBRELLA_HANDLE_START       0                                                               //handle LED Count
+#define S_UMBRELLA_L_RIB_CENTRE_START S_UMBRELLA_HANDLE_START       + S_UMBRELLA_HANDLE_CNT           //left center rib LED Start
+#define S_UMBRELLA_R_RIB_MID_START    S_UMBRELLA_L_RIB_CENTRE_START + S_UMBRELLA_L_RIB_CENTRE_CNT     //right middle rib LED Start
+#define S_UMBRELLA_R_RIB_CENTRE_START S_UMBRELLA_R_RIB_MID_START    + S_UMBRELLA_R_RIB_MID_CNT        //right center rib LED Start
+#define S_UMBRELLA_L_RIB_MID_START    S_UMBRELLA_R_RIB_CENTRE_START + S_UMBRELLA_R_RIB_CENTRE_CNT     //left middle rib LED Start
+#define S_UMBRELLA_L_RIB_OUTER_START  S_UMBRELLA_L_RIB_MID_START    + S_UMBRELLA_L_RIB_MID_CNT        //left outmost rib LED Start
+#define S_UMBRELLA_R_RIB_OUTER_START  S_UMBRELLA_L_RIB_OUTER_START  + S_UMBRELLA_L_RIB_OUTER_CNT      //right outmost rib LED Start
+#define S_UMBRELLA_BTM_CANOPY_START   S_UMBRELLA_R_RIB_OUTER_START  + S_UMBRELLA_R_RIB_OUTER_CNT      //btm bit LED Start
+
 #define S_UMBRELLA_START 0
-#define S_UMBRELLA_END   10
+#define S_UMBRELLA_END   S_UMBRELLA_BTM_CANOPY_START + S_UMBRELLA_BTM_CANOPY_CNT
 #define S_UMBRELLA_COLOR CRGB::Yellow
 
 // Penguin Umbrella
+//sections of Penguin Umbrella
+#define P_UMBRELLA_HANDLE_CNT       9     //handle LED Count
+#define P_UMBRELLA_L_RIB_OUTER_CNT  12    //left outmost rib LED Count
+#define P_UMBRELLA_R_RIB_OUTER_CNT  13    //right outmost rib LED Count
+#define P_UMBRELLA_L_RIB_MID_CNT    9     //left middle rib LED Count
+#define P_UMBRELLA_R_RIB_MID_CNT    10    //right middle rib LED Count
+#define P_UMBRELLA_L_RIB_CENTRE_CNT 8     //left center rib LED Count
+#define P_UMBRELLA_R_RIB_CENTRE_CNT 8     //right center rib LED Count
+#define P_UMBRELLA_BTM_CANOPY_CNT   19    //btm bit LED Count
+
+#define P_UMBRELLA_HANDLE_START       0                                                               //handle LED Count
+#define P_UMBRELLA_L_RIB_CENTRE_START P_UMBRELLA_HANDLE_START       + P_UMBRELLA_HANDLE_CNT           //left center rib LED Start
+#define P_UMBRELLA_R_RIB_MID_START    P_UMBRELLA_L_RIB_CENTRE_START + P_UMBRELLA_L_RIB_CENTRE_CNT     //right middle rib LED Start
+#define P_UMBRELLA_R_RIB_CENTRE_START P_UMBRELLA_R_RIB_MID_START    + P_UMBRELLA_R_RIB_MID_CNT        //right center rib LED Start
+#define P_UMBRELLA_L_RIB_MID_START    P_UMBRELLA_R_RIB_CENTRE_START + P_UMBRELLA_R_RIB_CENTRE_CNT     //left middle rib LED Start
+#define P_UMBRELLA_L_RIB_OUTER_START  P_UMBRELLA_L_RIB_MID_START    + P_UMBRELLA_L_RIB_MID_CNT        //left outmost rib LED Start
+#define P_UMBRELLA_R_RIB_OUTER_START  P_UMBRELLA_L_RIB_OUTER_START  + P_UMBRELLA_L_RIB_OUTER_CNT      //right outmost rib LED Start
+#define P_UMBRELLA_BTM_CANOPY_START   P_UMBRELLA_R_RIB_OUTER_START  + P_UMBRELLA_R_RIB_OUTER_CNT      //btm bit LED Start
+  
+//umbrella LED order is L_C, R_M, R_C, L_M, L_O, R_O, BTM
 #define P_UMBRELLA_START  0
-#define P_UMBRELLA_END   80
-#define P_UMBRELLA_COLOR  CRGB::Pink
+#define P_UMBRELLA_END    P_UMBRELLA_BTM_CANOPY_START + P_UMBRELLA_BTM_CANOPY_CNT
+#define P_UMBRELLA_COLOR  CRGB::Red
 
 #define PENGUINS_START    0
 #define PENGUINS_END      100
@@ -93,4 +132,3 @@
 #define P_1_L_ARM_START   6
 #define P_1_L_ARM_END     7
 #define P_1_L_ARM_COLOR   CRGB::Blue
-
