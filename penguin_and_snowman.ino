@@ -9,7 +9,7 @@
 #define COLOR_ORDER RGB
 
 CRGB body[BODY_END - BODY_START];
-CRGB head[HEAD_END - HEAD_START];
+CRGB head[HEAD_END - HEAD_START + 1];
 CRGB torso[TORSO_END - TORSO_START];
 CRGB s_umbrella[S_UMBRELLA_END - S_UMBRELLA_START];
 CRGB p_umbrella[P_UMBRELLA_END - P_UMBRELLA_START];
@@ -40,11 +40,11 @@ void loop() {
   color_item(body, BODY_START, BODY_END, BODY_COLOR);
   
   // // Snowman Head
-  color_item(head, HAT_START, HAT_END, HAT_COLOR);
-  color_item(head, FACE_START, FACE_END, FACE_COLOR);
-  color_item(head, MOUTH_START, MOUTH_END, MOUTH_COLOR);
-  color_item(head, EYES_START, EYES_END, EYES_COLOR);
-  color_item(head, NOSE_START, NOSE_END, NOSE_COLOR);
+  color_item(head, HAT_START, HAT_START+HAT_CNT, HAT_COLOR);
+  color_item(head, FACE_START, FACE_START+FACE_CNT, FACE_COLOR);
+  color_item(head, MOUTH_START, MOUTH_START+MOUTH_CNT, MOUTH_COLOR);
+  color_item(head, EYES_START, EYES_START+EYES_CNT, EYES_COLOR);
+  color_item(head, NOSE_START, NOSE_START+NOSE_CNT, NOSE_COLOR);
 
   // Snowman Torso
   color_item(torso, L_HAND_START, L_HAND_END, L_HAND_COLOR);

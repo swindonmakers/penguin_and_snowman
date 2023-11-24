@@ -1,11 +1,12 @@
 // Defines leds for various parts:
 
-#define DATA_PIN_HEAD       4
-#define DATA_PIN_TORSO      5
-#define DATA_PIN_BODY       6
-#define DATA_PIN_S_UMBRELLA 7
-#define DATA_PIN_P_UMBRELLA 8
-#define DATA_PIN_PENGUINS   9
+#define DATA_PIN_HEAD       5
+#define DATA_PIN_TORSO      18
+#define DATA_PIN_BODY       19
+#define DATA_PIN_S_UMBRELLA 21
+#define DATA_PIN_P_UMBRELLA 22
+#define DATA_PIN_PENGUINS   23
+
 
 // Body
 #define BODY_START   0
@@ -42,28 +43,29 @@
 
 // Head
 #define HEAD_START   0
-#define HEAD_END    17
 
 // Hat + Face are subsets of Head
-#define HAT_START    0
-#define HAT_END      4
-#define HAT_COLOR    CRGB::Red
-
-#define FACE_START   5
-#define FACE_END     9
+#define FACE_START   HEAD_START
+#define FACE_CNT     27
 #define FACE_COLOR   CRGB::White
 
-#define MOUTH_START 10
-#define MOUTH_END   13
-#define MOUTH_COLOR  CRGB::White
+#define HAT_START    FACE_START+FACE_CNT
+#define HAT_CNT      47
+#define HAT_COLOR    CRGB::Red
 
-#define EYES_START  14
-#define EYES_END    15
+#define MOUTH_START HAT_START+HAT_CNT
+#define MOUTH_CNT    8
+#define MOUTH_COLOR  CRGB::Yellow
+
+#define NOSE_START  MOUTH_START+MOUTH_CNT
+#define NOSE_CNT    11
+#define NOSE_COLOR  CRGB::Orange
+
+#define EYES_START  NOSE_START+NOSE_CNT
+#define EYES_CNT    12
 #define EYES_COLOR  CRGB::White
 
-#define NOSE_START  16
-#define NOSE_END    17
-#define NOSE_COLOR  CRGB::Orange
+#define HEAD_END    HEAD_START+FACE_CNT+HAT_CNT+MOUTH_CNT+NOSE_CNT+EYES_CNT
 
 // Snowman Umbrella
 //sections of Snowman Umbrella
