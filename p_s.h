@@ -1,5 +1,6 @@
 // Defines leds for various parts:
 // L and R means stage left and stage right ie:your left not the models 
+#define DATA_PIN_DISPLAY    3
 #define DATA_PIN_HEAD       4
 #define DATA_PIN_TORSO      5
 #define DATA_PIN_BODY       6
@@ -7,6 +8,9 @@
 #define DATA_PIN_P_UMBRELLA 8
 #define DATA_PIN_PENGUINS   9
 
+
+#define DISPLAY_CNT 26
+#define DISPLAY_COLOR CRGB::White
 
 // Snowman Umbrella
 //sections of Snowman Umbrella
@@ -102,15 +106,16 @@
 #define P_1_HAT_POM_START P_1_T_HAT_START       + P_1_T_HAT_CNT
 #define P_1_B_HAT_START   P_1_HAT_POM_START     + P_1_HAT_POM_CNT      //pompom
 
-#define P_1_FOOT_COLOR     CRGB::Orange
-#define P_1_WING_COLOR     CRGB::Blue
-#define P_1_SCARF_COLOR    CRGB::Red
-#define P_1_BROW_COLOR     CRGB::Blue
-#define P_1_EYE_COLOR      CRGB::Yellow
-#define P_1_BEAK_COLOR     CRGB::Orange
+#define P_1_FOOT_COLOR     CRGB::Gold
+#define P_1_WING_COLOR     CRGB::MediumBlue 
+#define P_1_SCARF_COLOR    CRGB::Fuchsia
+#define P_1_BROW_COLOR     CRGB::MediumBlue 
+#define P_1_EYE_COLOR      CRGB::Goldenrod
+// #define P_1_BEAK_COLOR     CRGB(40,  255,  255) //CRGB::Chartreuse//RGB is GRB out of order with these so finding a different colour 
 #define P_1_HAT_COLOR      CRGB::Red
-#define P_1_BODY_COLOR     CRGB::Blue
-#define P_1_HAT_POM_COLOR  CRGB::White
+#define P_1_BODY_COLOR     CRGB::MediumBlue 
+#define P_1_BODY_COLOR2    CRGB::PaleGreen //effectively white 
+#define P_1_HAT_POM_COLOR  CRGB::PaleGreen
 
 //sections of top Penguin's
 #define P_2_L_FOOT_CNT     5
@@ -120,7 +125,7 @@
 #define P_2_T_SCARF_CNT    4
 #define P_2_R_SCARF_CNT    5
 #define P_2_L_SCARF_CNT    6
-#define P_2_L_WING_CNT     5
+#define P_2_L_WING_CNT     6
 #define P_2_B_BODY_CNT     15
 #define P_2_T_BODY_CNT     8
 #define P_2_L_EAR_CNT      6
@@ -150,17 +155,18 @@
 #define P_2_L_EYE_START   P_2_BEAK_START        + P_2_BEAK_CNT
 
 #define PENGUINS_START    P_1_L_FOOT_START
-#define PENGUINS_END      P_1_L_EYE_START + P_2_L_EYE_CNT
+#define PENGUINS_END      P_2_L_EYE_START + P_2_L_EYE_CNT
 
-#define P_2_FOOT_COLOR     CRGB::Orange
+#define P_2_FOOT_COLOR     CRGB::Gold
 #define P_2_WING_COLOR     CRGB::Blue
-#define P_2_SCARF_COLOR    CRGB::Red
+#define P_2_SCARF_COLOR    CRGB::Green
 #define P_2_BROW_COLOR     CRGB::Blue
 #define P_2_EYE_COLOR      CRGB::Yellow
 #define P_2_BEAK_COLOR     CRGB::Orange
 #define P_2_HAT_COLOR      CRGB::Red
 #define P_2_BODY_COLOR     CRGB::Blue
-#define P_2_EAR_COLOR      CRGB::White
+#define P_2_BODY_COLOR2    CRGB::PaleGreen //effectively white 
+#define P_2_EAR_COLOR      CRGB::Red
 
 // snowman
 //sections of Snowman
@@ -226,7 +232,7 @@
 
 #define S_FACE_COLOR     CRGB::White
 #define S_HAT_COLOR      CRGB::Red
-#define S_MOUTH_COLOR    CRGB::Yellow
-#define S_EYES_COLOR     CRGB::Green
-#define S_NOSE_COLOR     CRGB::Orange
+#define S_MOUTH_COLOR    CRGB::Chartreuse
+#define S_EYES_COLOR     CRGB::Red
+#define S_NOSE_COLOR     CRGB::Yellow
 

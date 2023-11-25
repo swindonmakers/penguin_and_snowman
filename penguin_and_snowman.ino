@@ -3,12 +3,13 @@
 #include <FastLED.h>
 #include "p_s.h"
 
-#define BRIGHTNESS 96
+#define BRIGHTNESS 120
 
 #define LED_TYPE WS2811
 #define COLOR_ORDER RGB
 
 CRGB body[S_B_BODY_END - S_B_BODY_START];
+CRGB display[DISPLAY_CNT];
 CRGB head[S_HEAD_END - S_HEAD_START];
 CRGB torso[S_TORSO_END - S_TORSO_START];
 CRGB s_umbrella[S_UMBRELLA_END - S_UMBRELLA_START];
@@ -16,9 +17,13 @@ CRGB p_umbrella[P_UMBRELLA_END - P_UMBRELLA_START];
 CRGB penguins[PENGUINS_END - PENGUINS_START];
 
 uint8_t global_hue = 0;
+int analogPin = A14;
+
 
 void setup() {
-    delay(3000);
+    delay(1000);
+    FastLED.addLeds<LED_TYPE, DATA_PIN_DISPLAY,COLOR_ORDER>
+    (display, DISPLAY_CNT).setCorrection(TypicalLEDStrip);
     FastLED.addLeds<LED_TYPE, DATA_PIN_BODY,COLOR_ORDER>
     (body, S_B_BODY_END - S_B_BODY_START).setCorrection(TypicalLEDStrip);
     FastLED.addLeds<LED_TYPE, DATA_PIN_HEAD,COLOR_ORDER>
@@ -33,24 +38,40 @@ void setup() {
     (penguins, PENGUINS_END - PENGUINS_START).setCorrection(TypicalLEDStrip);
 
     FastLED.setBrightness(BRIGHTNESS);
+    // delay(3000);
+    // Serial.begin(9600);
 }
 
 void loop() {
   // Snowman Body
-  color_item(body, S_B_BODY_START, S_B_BODY_START + S_B_BODY_CNT, S_B_BODY_COLOR);
-  color_item(body, S_B_BADGE_START, S_B_BADGE_START + S_B_BADGE_CNT, S_B_BADGE_COLOR);
+  int val;
+  val = analogRead(analogPin);
+  FastLED.setBrightness(60 + val/8);
+  // Serial.println(val);
+  // Serial.println(80 + val/12);
+  
+
+  color_item(display, 0, DISPLAY_CNT, DISPLAY_COLOR);
+  color_item(body, S_B_BODY_START, S_B_BODY_START + S_B_BODY_CNT, CRGB(100,255,100));
+  color_item(body, S_B_BADGE_START, S_B_BADGE_START + S_B_BADGE_CNT, CRGB(40,  255,  0));
   
   // // Snowman Head
-  color_item(head, S_HEAD_START, S_HEAD_START + S_FACE_CNT, S_FACE_COLOR);
-  color_item(head, S_HAT_RIM_START, S_HAT_RIM_CNT + S_HAT_CNT, S_HAT_COLOR);
+  color_item(head, S_HEAD_START, S_HEAD_START + S_FACE_CNT, CRGB(100,255,100));
+  color_item(head, S_HAT_RIM_START, S_HAT_RIM_START + S_HAT_RIM_CNT + S_HAT_CNT, S_HAT_COLOR);
   color_item(head, S_MOUTH_START, S_MOUTH_START + S_FACE_CNT, S_MOUTH_COLOR);
-  color_item(head, S_L_EYE_START, S_L_EYE_CNT + S_R_EYE_CNT, S_EYES_COLOR);
+  color_item(head, S_L_EYE_START, S_L_EYE_START + S_L_EYE_CNT + S_R_EYE_CNT, CRGB(70,0,0));
   color_item(head, S_NOSE_START, S_NOSE_START + S_NOSE_CNT, S_NOSE_COLOR);
 
   // Snowman Torso
-  color_item(torso, S_R_OUTTER_ARM_START, S_R_OUTTER_ARM_CNT + S_R_HAND_CNT + S_R_INNER_ARM_CNT + S_M_BODY_CNT, S_B_BODY_COLOR);
-  color_item(torso, S_T_SCARF_START, S_T_SCARF_CNT + S_B_SCARF_CNT + S_L_SCARF_CNT + S_R_SCARF_CNT, S_SCARF_COLOR);
-  color_item(torso, S_L_T_ARM_START, S_L_T_ARM_CNT + S_L_HAND_CNT + S_L_B_ARM_CNT, S_B_BODY_COLOR);
+
+  color_item(torso, S_R_OUTTER_ARM_START, S_R_OUTTER_ARM_CNT,  CRGB(100,255,100));
+  color_item(torso, S_R_HAND_START, S_R_HAND_START + S_R_HAND_CNT,  CRGB::Green);
+  color_item(torso, S_R_INNER_ARM_START, S_R_INNER_ARM_START + S_R_INNER_ARM_CNT,  CRGB(100,255,100));
+  color_item(torso, S_M_BODY_START, S_M_BODY_START + S_M_BODY_CNT,  CRGB(100,255,100));
+  color_item(torso, S_T_SCARF_START, S_T_SCARF_START + S_T_SCARF_CNT + S_B_SCARF_CNT + S_L_SCARF_CNT + S_R_SCARF_CNT, S_SCARF_COLOR);
+  color_item(torso, S_L_T_ARM_START, S_L_T_ARM_START + S_L_T_ARM_CNT + S_L_HAND_CNT + S_L_B_ARM_CNT,  CRGB(100,255,100));
+  color_item(torso, S_L_HAND_START, S_L_HAND_START + S_L_HAND_CNT,  CRGB::Green);
+  color_item(torso, S_L_B_ARM_START, S_L_B_ARM_START + S_L_B_ARM_CNT,  CRGB(100,255,100));
 
   // Snowman Umbrella
   color_item(s_umbrella, S_UMBRELLA_START, S_UMBRELLA_END, S_UMBRELLA_COLOR);
@@ -59,31 +80,35 @@ void loop() {
   color_item(p_umbrella, P_UMBRELLA_START, P_UMBRELLA_END, P_UMBRELLA_COLOR);
 
   // Penguin 1
-  color_item(penguins, P_1_L_FOOT_START, P_1_L_FOOT_CNT + P_1_R_FOOT_CNT, P_1_FOOT_COLOR);
-  color_item(penguins, P_1_L_WING_START, P_1_L_WING_CNT, P_1_WING_COLOR);
-  color_item(penguins, P_1_R_WING_START, P_1_R_WING_CNT, P_1_WING_COLOR);
-  color_item(penguins, P_1_B_SCARF_START, P_1_B_SCARF_CNT + P_1_T_SCARF_CNT + P_1_R_SCARF_CNT + P_1_L_SCARF_CNT, P_1_SCARF_COLOR);
-  color_item(penguins, P_1_BROW_START, P_1_BROW_CNT, P_1_BROW_COLOR);
-  color_item(penguins, P_1_R_EYE_START, P_1_R_EYE_CNT, P_1_EYE_COLOR);
-  color_item(penguins, P_1_L_EYE_START, P_1_L_EYE_CNT, P_1_EYE_COLOR);
-  color_item(penguins, P_1_BEAK_START, P_1_BEAK_CNT, P_1_BEAK_COLOR);
-  color_item(penguins, P_1_B_HAT_RIM_START, P_1_B_HAT_RIM_CNT + P_1_T_HAT_RIM_CNT, P_1_HAT_COLOR);
-  color_item(penguins, P_1_L_BODY_START, P_1_L_BODY_CNT + P_1_B_BODY_CNT + P_1_B_BODY_CNT, P_1_BODY_COLOR);
-  color_item(penguins, P_1_T_HAT_START, P_1_T_HAT_CNT, P_1_HAT_COLOR);
-  color_item(penguins, P_1_HAT_POM_START, P_1_HAT_POM_CNT, P_1_HAT_POM_COLOR);
+  color_item(penguins, P_1_L_FOOT_START, P_1_L_FOOT_START + P_1_L_FOOT_CNT + P_1_R_FOOT_CNT, P_1_FOOT_COLOR);
+  color_item(penguins, P_1_R_WING_START, P_1_R_WING_START + P_1_R_WING_CNT, P_1_WING_COLOR);
+  color_item(penguins, P_1_B_SCARF_START, P_1_B_SCARF_START + P_1_B_SCARF_CNT + P_1_T_SCARF_CNT + P_1_R_SCARF_CNT + P_1_L_SCARF_CNT, P_1_SCARF_COLOR);
+  color_item(penguins, P_1_BROW_START, P_1_BROW_START + P_1_BROW_CNT, P_1_BROW_COLOR);
+  color_item(penguins, P_1_R_EYE_START, P_1_R_EYE_START + P_1_R_EYE_CNT, CRGB(109,  82,  16));
+  color_beak_1(penguins, P_1_BEAK_START, CRGB(40,  255,  0));
+  color_item(penguins, P_1_L_EYE_START, P_1_L_EYE_START + P_1_L_EYE_CNT, CRGB(109,  82,  16)); 
+  color_item(penguins, P_1_L_WING_START, P_1_L_WING_START + P_1_L_WING_CNT, P_1_WING_COLOR);
+  color_item(penguins, P_1_B_HAT_RIM_START, P_1_B_HAT_RIM_START+  P_1_B_HAT_RIM_CNT + P_1_T_HAT_RIM_CNT, P_1_HAT_COLOR);
+  color_item(penguins, P_1_L_BODY_START, P_1_L_BODY_START + P_1_L_BODY_CNT , P_1_BODY_COLOR2);
+  color_item(penguins, P_1_B_BODY_START, P_1_B_BODY_START + P_1_B_BODY_CNT , P_1_BODY_COLOR);
+  color_item(penguins, P_1_R_BODY_START, P_1_R_BODY_START + P_1_R_BODY_CNT , P_1_BODY_COLOR2);
+  color_item(penguins, P_1_T_HAT_START, P_1_T_HAT_START + P_1_T_HAT_CNT, P_1_HAT_COLOR);
+  color_item(penguins, P_1_HAT_POM_START, P_1_HAT_POM_START + P_1_HAT_POM_CNT, P_1_HAT_POM_COLOR);
+  color_item(penguins, P_1_B_HAT_START, P_1_B_HAT_START + P_1_B_HAT_CNT, P_1_HAT_COLOR);
 
   // Penguin 2
-  color_item(penguins, P_2_L_FOOT_START, P_2_L_FOOT_CNT + P_2_R_FOOT_CNT, P_2_FOOT_COLOR);
-  color_item(penguins, P_2_L_WING_START, P_2_L_WING_CNT, P_2_WING_COLOR);
-  color_item(penguins, P_2_R_WING_START, P_2_R_WING_CNT, P_2_WING_COLOR);
-  color_item(penguins, P_2_B_SCARF_START, P_2_B_SCARF_CNT + P_2_T_SCARF_CNT + P_2_R_SCARF_CNT + P_2_L_SCARF_CNT, P_2_SCARF_COLOR);
-  color_item(penguins, P_2_B_BODY_START, P_2_B_BODY_CNT + P_2_T_BODY_CNT, P_2_BODY_COLOR);
-  color_item(penguins, P_2_L_EAR_START, P_2_L_EAR_CNT, P_2_EAR_COLOR);
-  color_item(penguins, P_2_R_EAR_START, P_2_R_EAR_CNT, P_2_EAR_COLOR);
-  color_item(penguins, P_2_BROW_START, P_2_BROW_CNT, P_2_BROW_COLOR);
-  color_item(penguins, P_2_R_EYE_START, P_2_R_EYE_CNT, P_2_EYE_COLOR);
-  color_item(penguins, P_2_L_EYE_START, P_2_L_EYE_CNT, P_2_EYE_COLOR);
-  color_item(penguins, P_2_BEAK_START, P_2_BEAK_CNT, P_2_BEAK_COLOR);
+  color_item(penguins, P_2_L_FOOT_START, P_2_L_FOOT_START + P_2_L_FOOT_CNT + P_2_R_FOOT_CNT, P_2_FOOT_COLOR);
+  color_item(penguins, P_2_L_WING_START, P_2_L_WING_START + P_2_L_WING_CNT, P_2_WING_COLOR);
+  color_item(penguins, P_2_R_WING_START, P_2_R_WING_START + P_2_R_WING_CNT, P_2_WING_COLOR);
+  color_item(penguins, P_2_B_SCARF_START, P_2_B_SCARF_START + P_2_B_SCARF_CNT + P_2_T_SCARF_CNT + P_2_R_SCARF_CNT + P_2_L_SCARF_CNT, P_2_SCARF_COLOR);
+  color_item(penguins, P_2_B_BODY_START, P_2_B_BODY_START + P_2_B_BODY_CNT , P_2_BODY_COLOR);
+  color_item(penguins, P_2_T_BODY_START, P_2_T_BODY_START + P_2_T_BODY_CNT , CRGB(80,255,80)); //"white"
+  color_item(penguins, P_2_L_EAR_START, P_2_L_EAR_START + P_2_L_EAR_CNT, P_2_EAR_COLOR);
+  color_item(penguins, P_2_R_EAR_START, P_2_R_EAR_START + P_2_R_EAR_CNT, P_2_EAR_COLOR);
+  color_item(penguins, P_2_BROW_START, P_2_BROW_START + P_2_BROW_CNT, P_2_BROW_COLOR);
+  color_item(penguins, P_2_R_EYE_START, P_2_R_EYE_START + P_2_R_EYE_CNT, CRGB(120,120,0)); //yellow
+  color_item(penguins, P_2_L_EYE_START,  P_2_L_EYE_START + P_2_L_EYE_CNT, CRGB(120,120,0)); //yellow
+  color_beak_2(penguins, P_2_BEAK_START, CRGB(40,  255,  0));
 
   p_umbrella_rainbow_wipe(global_hue);
   s_umbrella_rainbow_wipe(global_hue+80);
@@ -93,7 +118,23 @@ void loop() {
   FastLED.show();
 }
 
-void color_item(CRGB section[], int start_led, int end_led, int color) {
+void color_beak_1(CRGB section[], int start_led , CRGB color){
+  //section[start_led+0] = color;
+  section[start_led+1] = color;
+  section[start_led+2] = color;
+  section[start_led+3] = color;
+  section[start_led+4] = color;
+}
+
+void color_beak_2(CRGB section[], int start_led , CRGB color){
+  //section[start_led+0] = color;
+  section[start_led+1] = color;
+  section[start_led+2] = color;
+  section[start_led+5] = color;
+  section[start_led+6] = color;
+}
+
+void color_item(CRGB section[], int start_led, int end_led, CRGB color) {
    for( int i = start_led; i < end_led; i++) {
        section[i] = color;
    }    
