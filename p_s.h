@@ -7,63 +7,6 @@
 #define DATA_PIN_P_UMBRELLA 8
 #define DATA_PIN_PENGUINS   9
 
-// // Body
-// #define BODY_START   0
-// #define BODY_END     5
-// #define BODY_COLOR   CRGB::White
-
-// // Torso
-// #define TORSO_START   0
-// #define TORSO_END    18
-
-// #define L_HAND_START  0
-// #define L_HAND_END    5
-// #define L_HAND_COLOR  CRGB::Green
-
-// #define L_ARM_START   6
-// #define L_ARM_END     10
-// #define L_ARM_COLOR   CRGB::White
-
-// #define T_MAIN_START  11
-// #define T_MAIN_END    12
-// #define T_MAIN_COLOR  CRGB::White
-
-// #define R_ARM_START   13
-// #define R_ARM_END     14
-// #define R_ARM_COLOR   CRGB::White
-
-// #define R_HAND_START  15
-// #define R_HAND_END    16
-// #define R_HAND_COLOR  CRGB::Green
-
-// #define T_SCARF_START 17
-// #define T_SCARF_END   18
-// #define T_SCARF_COLOR CRGB::Yellow
-
-// // Head
-// #define HEAD_START   0
-// #define HEAD_END    17
-
-// // Hat + Face are subsets of Head
-// #define HAT_START    0
-// #define HAT_END      4
-// #define HAT_COLOR    CRGB::Red
-
-// #define FACE_START   5
-// #define FACE_END     9
-// #define FACE_COLOR   CRGB::White
-
-// #define MOUTH_START 10
-// #define MOUTH_END   13
-// #define MOUTH_COLOR  CRGB::White
-
-// #define EYES_START  14
-// #define EYES_END    15
-// #define EYES_COLOR  CRGB::White
-
-// #define NOSE_START  16
-// #define NOSE_END    17
-// #define NOSE_COLOR  CRGB::Orange
 
 // Snowman Umbrella
 //sections of Snowman Umbrella
@@ -114,9 +57,6 @@
 #define P_UMBRELLA_END    P_UMBRELLA_BTM_CANOPY_START + P_UMBRELLA_BTM_CANOPY_CNT
 #define P_UMBRELLA_COLOR  CRGB::Red
 
-#define PENGUINS_START    0
-#define PENGUINS_END      100
-
 // Penguins
 //sections of bottom Penguin
 #define P_1_L_FOOT_CNT     5
@@ -141,8 +81,6 @@
 #define P_1_B_HAT_CNT      3
 
 
-
-
 #define P_1_L_FOOT_START  0
 #define P_1_R_FOOT_START  P_1_L_FOOT_START      + P_1_L_FOOT_CNT
 #define P_1_R_WING_START  P_1_R_FOOT_START      + P_1_R_FOOT_CNT
@@ -155,15 +93,24 @@
 #define P_1_BEAK_START    P_1_R_EYE_START       + P_1_R_EYE_CNT
 #define P_1_L_EYE_START   P_1_BEAK_START        + P_1_BEAK_CNT
 #define P_1_L_WING_START  P_1_L_EYE_START       + P_1_L_EYE_CNT
-#define P_1_B_RIM_START   P_1_L_WING_START      + P_1_L_WING_CNT
-#define P_1_T_RIM_START   P_1_B_RIM_START       + P_1_B_HAT_RIM_CNT
-#define P_1_L_BODY_START  P_1_T_RIM_START       + P_1_T_HAT_RIM_CNT    //black bit of body
+#define P_1_B_HAT_RIM_START   P_1_L_WING_START      + P_1_L_WING_CNT
+#define P_1_T_HAT_RIM_START   P_1_B_HAT_RIM_START       + P_1_B_HAT_RIM_CNT
+#define P_1_L_BODY_START  P_1_T_HAT_RIM_START       + P_1_T_HAT_RIM_CNT    //black bit of body
 #define P_1_B_BODY_START  P_1_L_BODY_START      + P_1_L_BODY_CNT       //white bit of body
 #define P_1_R_BODY_START  P_1_B_BODY_START      + P_1_B_BODY_CNT       //black bit of body
 #define P_1_T_HAT_START   P_1_R_BODY_START      + P_1_R_BODY_CNT    
 #define P_1_HAT_POM_START P_1_T_HAT_START       + P_1_T_HAT_CNT
 #define P_1_B_HAT_START   P_1_HAT_POM_START     + P_1_HAT_POM_CNT      //pompom
-    
+
+#define P_1_FOOT_COLOR     CRGB::Orange
+#define P_1_WING_COLOR     CRGB::Blue
+#define P_1_SCARF_COLOR    CRGB::Red
+#define P_1_BROW_COLOR     CRGB::Blue
+#define P_1_EYE_COLOR      CRGB::Yellow
+#define P_1_BEAK_COLOR     CRGB::Orange
+#define P_1_HAT_COLOR      CRGB::Red
+#define P_1_BODY_COLOR     CRGB::Blue
+#define P_1_HAT_POM_COLOR  CRGB::White
 
 //sections of top Penguin's
 #define P_2_L_FOOT_CNT     5
@@ -202,7 +149,18 @@
 #define P_2_BEAK_START    P_2_R_EYE_START       + P_2_R_EYE_CNT
 #define P_2_L_EYE_START   P_2_BEAK_START        + P_2_BEAK_CNT
 
+#define PENGUINS_START    P_1_L_FOOT_START
+#define PENGUINS_END      P_1_L_EYE_START + P_2_L_EYE_CNT
 
+#define P_2_FOOT_COLOR     CRGB::Orange
+#define P_2_WING_COLOR     CRGB::Blue
+#define P_2_SCARF_COLOR    CRGB::Red
+#define P_2_BROW_COLOR     CRGB::Blue
+#define P_2_EYE_COLOR      CRGB::Yellow
+#define P_2_BEAK_COLOR     CRGB::Orange
+#define P_2_HAT_COLOR      CRGB::Red
+#define P_2_BODY_COLOR     CRGB::Blue
+#define P_2_EAR_COLOR      CRGB::White
 
 // snowman
 //sections of Snowman
@@ -213,7 +171,10 @@
 
 #define S_B_BODY_START   0
 #define S_B_BADGE_START  S_B_BODY_START + S_B_BODY_CNT
+#define S_B_BODY_END     S_B_BADGE_START + S_B_BADGE_CNT
 
+#define S_B_BODY_COLOR   CRGB::White
+#define S_B_BADGE_COLOR   CRGB::Orange
 
 //middle section of  Snowman
 #define S_R_OUTTER_ARM_CNT 13
@@ -229,7 +190,7 @@
 #define S_L_B_ARM_CNT      9
 
 #define S_R_OUTTER_ARM_START  0
-#define S_R_HAND_START        S_R_OUTTER_ARM_START + S_R_OUTTER_ARM_CNT
+#define S_R_HAND_START        S_TORSO_START + S_R_OUTTER_ARM_CNT
 #define S_R_INNER_ARM_START   S_R_HAND_START       + S_R_HAND_CNT
 #define S_M_BODY_START        S_R_INNER_ARM_START  + S_R_INNER_ARM_CNT
 #define S_T_SCARF_START       S_M_BODY_START       + S_M_BODY_CNT
@@ -240,8 +201,13 @@
 #define S_L_HAND_START        S_L_T_ARM_START      + S_L_T_ARM_CNT
 #define S_L_B_ARM_START       S_L_HAND_START       + S_L_HAND_CNT
 
+#define S_TORSO_START         S_R_OUTTER_ARM_START
+#define S_TORSO_END           S_L_B_ARM_START      + S_L_B_ARM_CNT
+
+#define S_SCARF_COLOR         CRGB::Pink
+
 //top section of  Snowman
-#define S_HEAD_CNT 29
+#define S_FACE_CNT 29
 #define S_HAT_RIM_CNT 23 
 #define S_HAT_CNT 23 
 #define S_MOUTH_CNT 8
@@ -249,29 +215,18 @@
 #define S_L_EYE_CNT 7
 #define S_R_EYE_CNT 7
 
-
-
 #define S_HEAD_START     0
-#define S_HAT_RIM_START  S_HEAD_START     + S_HEAD_CNT
+#define S_HAT_RIM_START  S_HEAD_START     + S_FACE_CNT
 #define S_HAT_START      S_HAT_RIM_START  + S_HAT_RIM_CNT
 #define S_MOUTH_START    S_HAT_START      + S_HAT_CNT
 #define S_NOSE_START     S_MOUTH_START    + S_MOUTH_CNT
 #define S_L_EYE_START    S_NOSE_START     + S_NOSE_CNT
-#define S_r_EYE_START    S_L_EYE_START    + S_L_EYE_CNT
+#define S_R_EYE_START    S_L_EYE_START    + S_L_EYE_CNT
+#define S_HEAD_END       S_R_EYE_START    + S_R_EYE_CNT
 
+#define S_FACE_COLOR     CRGB::White
+#define S_HAT_COLOR      CRGB::Red
+#define S_MOUTH_COLOR    CRGB::Yellow
+#define S_EYES_COLOR     CRGB::Green
+#define S_NOSE_COLOR     CRGB::Orange
 
-// #define P_1_BODY_START    0
-// #define P_1_BODY_END      1
-// #define P_1_BODY_COLOR    CRGB::White
-
-// #define P_1_HEAD_START    2
-// #define P_1_HEAD_END      3
-// #define P_1_HEAD_COLOR    CRGB::Blue
-
-// #define P_1_MUFFS_START   4
-// #define P_1_MUFFS_END     5
-// #define P_1_MUFFS_COLOR    CRGB::Red
-
-// #define P_1_L_ARM_START   6
-// #define P_1_L_ARM_END     7
-// #define P_1_L_ARM_COLOR   CRGB::Blue
