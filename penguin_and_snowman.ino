@@ -15,6 +15,8 @@ CRGB torso[S_TORSO_END - S_TORSO_START];
 CRGB s_umbrella[S_UMBRELLA_END - S_UMBRELLA_START];
 CRGB p_umbrella[P_UMBRELLA_END - P_UMBRELLA_START];
 CRGB penguins[PENGUINS_END - PENGUINS_START];
+CRGB fox[F_END - F_START];
+CRGB squirrel[SQ_END - SQ_START];
 
 uint8_t global_hue = 0;
 int analogPin = A14;
@@ -37,6 +39,12 @@ void setup() {
     FastLED.addLeds<LED_TYPE, DATA_PIN_PENGUINS,COLOR_ORDER>
     (penguins, PENGUINS_END - PENGUINS_START).setCorrection(TypicalLEDStrip);
 
+    FastLED.addLeds<LED_TYPE, DATA_PIN_FOX,COLOR_ORDER>
+    (fox, F_END - F_START).setCorrection(TypicalLEDStrip);
+
+    FastLED.addLeds<LED_TYPE, DATA_PIN_SQUIRREL,COLOR_ORDER>
+    (squirrel, SQ_END - SQ_START).setCorrection(TypicalLEDStrip);
+
     FastLED.setBrightness(BRIGHTNESS);
     // delay(3000);
     // Serial.begin(9600);
@@ -49,7 +57,7 @@ void loop() {
   FastLED.setBrightness(60 + val/8);
   // Serial.println(val);
   // Serial.println(80 + val/12);
-  
+
 
   color_item(display, 0, DISPLAY_CNT, DISPLAY_COLOR);
   color_item(body, S_B_BODY_START, S_B_BODY_START + S_B_BODY_CNT, CRGB(100,255,100));
@@ -113,6 +121,21 @@ void loop() {
   p_umbrella_rainbow_wipe(global_hue);
   s_umbrella_rainbow_wipe(global_hue+80);
   global_hue--;
+
+  // Fox
+  color_item(fox, F_START, F_START + F_TAIL_TIP_CNT, F_TAIL_COLOR);
+  color_item(fox, F_TAIL_MAIN_ST, F_TAIL_MAIN_ST + F_TAIL_MAIN_CNT + F_REAR_LEG_CNT + F_MID_LEG_CNT + F_MID_BODY_CNT, F_BODY_COLOR);
+  color_item(fox, F_LEFT_MASK_ST, F_LEFT_MASK_ST + F_LEFT_MASK_CNT + F_RIGHT_MASK_CNT + F_LOWER_FACE_CNT, F_MASK_COLOR);
+  color_item(fox, F_L_HEAD_ST, F_L_HEAD_ST + F_L_HEAD_CNT + F_R_HEAD_CNT, F_BODY_COLOR);
+  color_item(fox, F_R_EYE_ST, F_R_EYE_ST + F_R_EYE_CNT + F_L_EYE_CNT, F_EYES_COLOR);
+  color_item(fox, F_L_EAR_ST, F_END, F_BODY_COLOR);
+
+  // Squirrel
+  color_item(squirrel, SQ_START, SQ_TOOTH_ST, SQ_BODY_COLOR);
+  color_item(squirrel, SQ_TOOTH_ST, SQ_TOOTH_ST + SQ_TOOTH_CNT, SQ_TOOTH_COLOR);
+  color_item(squirrel, SQ_R_EYE_ST, SQ_R_EYE_ST + SQ_R_EYE_CNT + SQ_L_EYE_CNT, SQ_EYE_COLOR);
+  color_item(squirrel, SQ_L_OUT_EYE_ST, SQ_END, SQ_BODY_COLOR);
+
   delay(100);
 
   FastLED.show();

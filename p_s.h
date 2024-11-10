@@ -7,6 +7,10 @@
 #define DATA_PIN_S_UMBRELLA 7
 #define DATA_PIN_P_UMBRELLA 8
 #define DATA_PIN_PENGUINS   9
+#define DATA_PIN_FOX        10
+#define DATA_PIN_SQUIRREL   11
+#define DATA_PIN_OWL        12
+#define DATA_PIN_TREE       13
 
 
 #define DISPLAY_CNT 26
@@ -236,3 +240,144 @@
 #define S_EYES_COLOR     CRGB::Red
 #define S_NOSE_COLOR     CRGB::Yellow
 
+// Fox
+#define F_TAIL_TIP_CNT  16
+#define F_TAIL_MAIN_CNT 21
+#define F_REAR_LEG_CNT  17
+#define F_MID_LEG_CNT   10
+// Junction with body/front leg
+#define F_MID_BODY_CNT   7
+#define F_LEFT_MASK_CNT  5
+#define F_RIGHT_MASK_CNT 6
+#define F_LOWER_FACE_CNT 8
+#define F_L_HEAD_CNT     4
+#define F_R_HEAD_CNT     4
+#define F_R_EYE_CNT      7
+#define F_L_EYE_CNT      7
+#define F_L_EAR_CNT      6
+#define F_TOP_HEAD_CNT   2
+#define F_R_EAR_CNT      6
+#define F_R_BODY_CNT     8
+#define F_FR_LEG_CNT    13
+#define F_L_BODY_CNT    13
+
+#define F_START          0
+#define F_TAIL_MAIN_ST   F_START           + F_TAIL_TIP_CNT
+#define F_REAR_LEG_ST    F_TAIL_MAIN_ST    + F_TAIL_MAIN_CNT
+#define F_MID_LEG_ST     F_TAIL_MAIN_ST    + F_REAR_LEG_CNT
+#define F_MID_BODY_ST    F_REAR_LEG_ST     + F_MID_LEG_CNT
+#define F_LEFT_MASK_ST   F_MID_LEG_ST      + F_MID_BODY_CNT
+#define F_RIGHT_MASK_ST  F_MID_BODY_ST     + F_LEFT_MASK_CNT
+#define F_LOWER_FACE_ST  F_LEFT_MASK_ST    + F_RIGHT_MASK_CNT
+#define F_L_HEAD_ST      F_RIGHT_MASK_ST   + F_LOWER_FACE_CNT
+#define F_R_HEAD_ST      F_LOWER_MASK_ST   + F_L_HEAD_CNT
+#define F_R_EYE_ST       F_L_HEAD_ST       + F_R_HEAD_CNT
+#define F_L_EYE_ST       F_R_HEAD_ST       + F_R_EYE_CNT
+#define F_L_EAR_ST       F_R_EYE_ST        + F_L_EYE_CNT
+#define F_TOP_HEAD_ST    F_L_EYE_ST        + F_L_EAR_CNT
+#define F_R_EAR_ST       F_L_EAR_ST        + F_TOP_HEAD_CNT
+#define F_R_BODY_ST      F_TOP_HEAD_ST     + F_R_EAR_CNT
+#define F_FR_LEG_ST      F_R_EAR_ST        + F_R_BODY_CNT
+#define F_L_BODY_ST      F_R_BODY_ST       + F_FR_LEG_CNT
+#define F_END            F_FR_LEG_ST       + F_L_BODY_CNT
+
+#define F_BODY_COLOR     CRGB::DarkRed
+#define F_TAIL_COLOR     CRGB::White
+#define F_MASK_COLOR     CRGB::White
+#define F_EYES_COLOR     CRGB::Red
+#define F_NOSE_COLOR     CRGB::DarkOrange
+
+// Squirrel
+#define SQ_L_TAIL_CNT    8
+#define SQ_M_TAIL_CNT   10
+#define SQ_U_TAIL_CNT   12
+#define SQ_M_BODY_CNT   14
+#define SQ_LOWER_HEAD_CNT 8
+#define SQ_R_OUT_EYE_CNT 3
+#define SQ_NOSE_CNT     10
+#define SQ_TOOTH_CNT     3
+#define SQ_R_EYE_CNT     7
+#define SQ_L_EYE_CNT     7
+#define SQ_L_OUT_EYE_CNT 3
+#define SQ_L_EAR_CNT     3
+#define SQ_UPPER_HEAD_CNT 6
+#define SQ_R_EAR_CNT     4
+#define SQ_U_BODY_CNT    2
+#define SQ_ARM_CNT       9
+#define SQ_F_BODY_CNT    3
+#define SQ_FOOT_CNT      5
+
+#define SQ_START   0
+#define SQ_L_TAIL_ST     SQ_START
+#define SQ_M_TAIL_ST     SQ_L_TAIL_ST      + SQ_L_TAIL_CNT
+#define SQ_U_TAIL_ST     SQ_M_TAIL_ST      + SQ_M_TAIL_CNT
+#define SQ_M_BODY_ST     SQ_U_TAIL_ST      + SQ_U_TAIL_CNT
+#define SQ_LOWER_HEAD_ST SQ_M_BODY_ST      + SQ_M_BODY_CNT
+#define SQ_R_OUT_EYE_ST  SQ_LOWER_HEAD_ST  + SQ_LOWER_HEAD_CNT
+#define SQ_NOSE_ST       SQ_R_OUT_EYE_ST   + SQ_R_OUT_EYE_CNT
+#define SQ_TOOTH_ST      SQ_NOSE_ST        + SQ_NOSE_CNT
+#define SQ_R_EYE_ST      SQ_TOOTH_ST       + SQ_TOOTH_CNT
+#define SQ_L_EYE_ST      SQ_R_EYE_ST       + SQ_R_EYE_CNT
+#define SQ_L_OUT_EYE_ST  SQ_L_EYE_ST       + SQ_L_EYE_CNT
+#define SQ_L_EAR_ST      SQ_L_OUT_EYE_ST   + SQ_L_OUT_EYE_CNT
+#define SQ_UPPER_HEAD_ST SQ_L_EAR_ST       + SQ_L_EAR_CNT
+#define SQ_R_EAR_ST      SQ_UPPER_HEAD_ST  + SQ_UPPER_HEAD_CNT
+#define SQ_U_BODY_ST     SQ_R_EAR_ST       + SQ_R_EAR_CNT
+#define SQ_ARM_ST        SQ_U_BODY_ST      + SQ_U_BODY_CNT
+#define SQ_F_BODY_ST     SQ_ARM_ST         + SQ_ARM_CNT
+#define SQ_FOOT_ST       SQ_F_BODY_ST      + SQ_F_BODY_CNT
+#define SQ_END           SQ_FOOT_ST        + SQ_FOOT_CNT
+
+#define SQ_BODY_COLOR    CRGB::Goldenrod
+#define SQ_HEAD_COLOR    CRGB::DarkGoldenrod
+#define SQ_TOOTH_COLOR   CRGB::IndianRed
+#define SQ_EYE_COLOR     CRGB::Blue
+
+// Owl
+#define O_M_BODY_CNT      12
+#define O_R_WING_IN_CNT    4
+#define O_R_WING_OUT_CNT   5
+#define O_R_FACE_CNT       8
+#define O_R_EAR_CNT        9
+#define O_HEAD_TOP_CNT     6
+#define O_L_EAR_CNT        7
+#define O_L_FACE_CNT       8
+#define O_L_OUT_EYE_CNT   11
+#define O_R_OUT_EYE_CNT   11
+#define O_BEAK_CNT         5
+#define O_R_IN_EYE_CNT     6
+#define O_R_EYE_CNT        7
+#define O_L_EYE_CNT        7
+#define O_L_IN_EYE_CNT     6
+#define O_L_WING_CNT      36
+
+#define O_START            0
+#define O_R_FACE_WING_ST   O_START            + O_M_BODY_CNT + O_R_WING_IN_CNT + O_R_WING_OUT_CNT
+#define O_R_EAR_ST         O_R_FACE_WING_ST   + O_R_FACE_CNT
+#define O_HEAD_TOP_ST      O_R_EAR_ST         + O_R_FACE_CNT
+#define O_L_EAR_ST         O_HEAD_TOP_ST      + O_HEAD_TOP_CNT
+#define O_OUTER_EYE_ST     O_L_EAR_ST         + O_L_EAR_CNT
+#define O_BEAK_ST          O_OUTER_EYE_ST     + O_L_OUT_EYE_CNT + O_R_OUT_EYE_CNT
+#define O_R_IN_EYE_ST      O_BEAK_ST          + O_BEAK_CNT
+#define O_EYES_ST          O_R_IN_EYE_ST      + O_R_IN_EYE_CNT
+#define O_L_IN_EYE_ST      O_EYES_ST          + O_R_EYE_CNT + O_L_EYE_CNT
+#define O_L_WING_ST        O_L_IN_EYE_ST      + O_L_IN_EYE_CNT
+#define O_END              O_L_WING_ST        + O_L_WING_CNT
+
+#define O_BODY_COLOR       CRGB::Blue
+#define O_EAR_COLOR        CRGB::White
+#define O_OUT_EYE_COLOR    CRGB::Cyan
+#define O_EYE_COLOR        CRGB::White
+#define O_BEAK_COLOR       CRGB::DarkBlue
+
+// Tree
+#define T_TR_BTM_CNT       52
+#define T_L_L_BRANCH_CNT   43
+#define T_R_L_BRANCH_CNT   44
+#define T_TR_MID_CNT       32
+#define T_R_U_BRANCH_CNT   24
+#define T_L_U_BRANCH_CNT   28
+#define T_TR_TOP_CNT       33
+
+#define T_START             0
+#define T_END               T_TR_BTM_CNT + T_L_L_BRANCH_CNT + T_R_L_BRANCH_CNT + T_TR_MID_CNT + T_R_U_BRANCH_CNT + T_L_U_BRANCH_CNT + T_TR_TOP_CNT
